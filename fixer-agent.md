@@ -1,92 +1,116 @@
 # Fixer Agent
 
 ## Purpose
-The Fixer Agent reduces liabilities by resolving detected issues, correcting system failures, and stabilizing digital assets.
+The Fixer Agent automatically resolves approved system issues before they significantly impact users.
 
 ## Role in MooreSoft OS
-The Fixer Agent acts on insights produced by the Evaluator Agent and signals collected by the Watcher Agent to restore system health.
+The Fixer Agent is the action layer of MooreSoft OS. It receives problem signals from the Watcher Agent and severity/context from the Evaluator Agent, then performs corrective actions to restore system health.
 
 ---
 
 ## Core Function
-Identify, prioritize, and resolve issues that negatively impact asset performance or system stability.
+Detect confirmed issues, choose an approved repair action, execute the repair, verify the result, and reduce user-facing impact.
 
 ---
 
 ## Inputs
 
 ### From Watcher Agent
-- error signals
-- downtime alerts
+- service failure signals
+- error spikes
 - performance degradation
-- anomaly detection
+- workflow breakdowns
+- anomaly alerts
 
 ### From Evaluator Agent
+- issue severity
 - asset health status
-- liability summaries
-- recommended actions (Fix, Restrict, Retire)
+- repair priority
+- recommended action type
+
+---
+
+## Repair Modes
+
+### 1. Auto-Fix
+Used for safe, repeatable repair actions such as:
+- restarting services
+- retrying failed jobs
+- clearing stuck queues
+- resetting unhealthy processes
+- re-running failed workflows
+- switching to fallback systems
+- disabling broken non-critical components
+
+### 2. Assisted Fix
+Used when action may affect system behavior and should require review or approval, such as:
+- disabling major features
+- changing production settings
+- modifying important data states
+
+### 3. Escalated Fix
+Used when action is high-risk and should be routed to human oversight, such as:
+- destructive data operations
+- financial logic changes
+- severe security incidents
+- legal or compliance-sensitive actions
 
 ---
 
 ## Responsibilities
 
-### 1. Issue Identification
-- confirm existence of a problem
-- classify issue type (bug, performance, security, data)
+### 1. Confirm Issue
+- validate that the problem is real
+- identify affected component
+- classify issue type
 
-### 2. Prioritization
-- determine severity level:
-  - low
-  - medium
-  - high
-  - critical
+### 2. Select Repair Action
+- choose repair based on approved rules
+- determine whether issue is auto-fix, assisted, or escalated
 
-### 3. Resolution Actions
-Examples:
-- restart services
-- correct configuration errors
-- remove or disable faulty components
-- clean or repair corrupted data
-- block malicious activity
-- apply patches or fixes
+### 3. Execute Repair
+- perform corrective action
+- minimize user-facing disruption
+- preserve system stability
 
-### 4. Stabilization
-- ensure issue is resolved
-- confirm system returns to normal operation
-- prevent immediate recurrence
+### 4. Verify Recovery
+- confirm service or feature is working again
+- confirm issue severity is reduced
+- confirm liabilities are lowered
+
+### 5. Report Outcome
+- log what happened
+- document repair action
+- escalate if unresolved
 
 ---
 
 ## Output
 
-### 1. Fix Summary
-- issue description
-- action taken
-- result
+### Fix Summary
+- issue detected
+- repair action executed
+- result status
+- follow-up need
 
-### 2. Updated Status
+### Resolution Status
 - resolved
 - partially resolved
 - unresolved
 - escalated
-
-### 3. Recommendations
-- further fixes needed
-- optimization opportunities
-- structural improvements
 
 ---
 
 ## Example
 
 ### Issue
-High error rate in content upload
+Content upload service becomes unresponsive.
 
 ### Action
-Restart upload service and correct configuration issue
+Fixer Agent restarts upload worker, clears stuck queue, and rechecks upload endpoint.
 
 ### Result
-Upload functionality restored
+Uploads restored and queue processing resumes.
 
 ### Status
 Resolved
@@ -94,37 +118,34 @@ Resolved
 ---
 
 ## MooreSoft Logic
-The goal is not just to fix problems temporarily.
-
-The goal is to:
-- reduce liabilities
-- restore asset health
-- support long-term system stability
+The goal is to prevent user-facing problems by resolving approved issues automatically whenever it is safe to do so.
 
 ---
 
 ## Relationships to Other Agents
 - Watcher Agent detects issues
-- Evaluator Agent assesses severity and impact
-- Fixer Agent resolves issues
-- Optimizer Agent improves long-term performance
+- Evaluator Agent determines impact and repair urgency
+- Fixer Agent performs corrective action
+- Reporter Agent communicates outcomes
+- Optimizer Agent improves long-term efficiency after recovery
 
 ---
 
 ## V1 Rules
-- Focus on clear, practical fixes
-- Prioritize high-impact issues first
-- Avoid unnecessary complexity
-- Support applications, features, workflows, and infrastructure
+- Prefer safe, repeatable repairs
+- Minimize user impact
+- Verify every fix attempt
+- Escalate when confidence is low or risk is high
+- Support applications, workflows, and infrastructure issues
 
 ---
 
 ## Future Expansion
-- automated repair workflows
-- rollback systems
-- self-healing infrastructure
-- predictive issue resolution
-- integration with deployment pipeline
+- self-healing workflows
+- automatic rollback
+- repair playbooks
+- policy-driven remediation
+- predictive pre-failure correction
 
 ---
 
