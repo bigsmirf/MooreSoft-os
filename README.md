@@ -36,10 +36,11 @@ The system improves over time by:
 
 ## Initial Agent Concepts
 
-- Watcher Agent → monitors systems
+- Watcher Agent → monitors systems and detects signals
+- Evaluator Agent → measures asset health and interprets value vs liability
 - Fixer Agent → resolves issues automatically
-- Optimizer Agent → improves performance
-- Reporter Agent → communicates insights
+- Optimizer Agent → improves performance and efficiency
+- Reporter Agent → communicates insights and system status
 
 ---
 
